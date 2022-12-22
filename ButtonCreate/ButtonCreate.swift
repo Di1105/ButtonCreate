@@ -22,17 +22,24 @@ class ButtonCreate: UIViewController {
         
         view.addSubview(btnA)
         view.addSubview(btnB)
-        design()
-        buttonA()
-        buttonB()
-    }
-    
-    private func design(){
+        
+        btnA.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(80)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(80)
+            make.width.equalTo(160)
+        }
         btnA.backgroundColor = .green
         btnA.setTitle("YEŞİL", for: .normal)
         btnA.setTitleColor(.white, for: .normal)
         btnA.addTarget(self, action: #selector(myfuncA), for: .touchUpInside)
         
+        btnB.snp.makeConstraints { make in
+            make.top.equalTo(btnA.snp.bottom).offset(40)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(80)
+            make.width.equalTo(160)
+        }
         btnB.setTitleColor(.white, for: .normal)
         btnB.layer.cornerRadius = 80
         btnB.backgroundColor = .blue
@@ -59,22 +66,3 @@ class ButtonCreate: UIViewController {
 
 }
 
-extension ButtonCreate {
-    private func buttonA(){
-        btnA.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(80)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(80)
-            make.width.equalTo(160)
-        }
-    }
-    
-    private func buttonB(){
-        btnB.snp.makeConstraints { make in
-            make.top.equalTo(btnA.snp.bottom).offset(40)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(80)
-            make.width.equalTo(160)
-        }
-    }
-}
